@@ -85,7 +85,7 @@
 % Identificadores do trabalho
 % Usados para preencher os elementos pré-textuais
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\titulo{A pesagem em movimento através de algoritmos} % Titulo do trabalho
+\titulo{Proposição de padrões para produtos científicos na Pesagem em Movimento} % Titulo do trabalho
 %\subtitulo{Estilo \LaTeX~ padrăo}                % Subtitulo do trabalho (opcional)
 \autor{Ivan Ogassavara}           % Nome do autor
 \data{01}{junho}{2016}                           % Data da publicaçăo do trabalho
@@ -175,52 +175,93 @@ To inhibit the excess weight of heavy vehicles, it is necessary to monitor these
 \chapter{Introduçăo}\label{introducao}
 Caminhões que transitam com excesso de carga danificam mais as vias e têm menos estabilidade, podendo acarretar em acidentes graves. No Brasil, o Departamento Nacional de Infraestrutura de Transportes (DNIT) informou a despesa empenhada em 2013 para ações de manutenção e restauração das estradas federais no valor de mais de R\$ 5 bilhões \cite{tech:relatorio-de-gestao-do-exercicio-de-2013}.
 
-A pesagem de veículos de carga é de vital importância à fiscalização de peso de caminhões, com o intuito de melhorar a segurança viária e reduzir custos de manutenção das vias \cite{techreport:jacob2002wave}. A pesagem em movimento, também conhecida como \textit{WIM} (sigla do termo em inglês \textit{Weigh-in-Motion}), é uma tecnologia que permite a fiscalização de veículos de carga sem que haja a interrupção do fluxo de trânsito dos veiculo, consequentemente, possibilita a pesagem de todos os veículos de carga e minimiza as filas nos Postos de Pesagem Veicular.
+A pesagem de veículos de carga é de vital importância à fiscalização de peso de caminhões, com o intuito de melhorar a segurança viária e reduzir custos de manutenção das vias \cite{techreport:jacob2002wave}. A pesagem em movimento, também conhecida como \textit{WIM} (sigla do termo em inglês \textit{Weigh-in-Motion}), é uma tecnologia que permite a fiscalização de veículos de carga sem que haja a interrupção do fluxo de trânsito dos veiculo, consequentemente, possibilita a pesagem de todos os veículos de carga que passarem pelos sensores.
 
 O tema de pesagem em movimento está tomando a atenção de governos do mundo inteiro. O COST 323 é uma das ações apoiadas pela \textit{COST Transport}, parte da Direção Geral da Comissão Europeia de Transportes. Seguindo uma proposta do grupo \textit{FEHRL} (sigla para o termo em inglês para Fórum dos Laboratórios de Pesquisa de Rodovias Europeias) o COST 323 foi iniciado em 1992. Desde 1993, ele tem sido gerido pelo Comitê de Gestão, um grupo de peritos científicos e técnicos, para promover o desenvolvimento e implementação de pesagem técnicas em movimento e suas aplicações, e para facilitar a troca de experiências entre os diferentes países europeus. Nos Estados Unidos da América, a \textit{FHWA} (sigla em inglês para o termo Administração Federal de Rodovias) fornece supervisão sobre a construção, manutenção e conservação de estradas, pontes e túneis do território norte americano. A \textit{FHWA} também realiza pesquisas e presta assistência técnica aos órgãos estaduais e municipais, em um esforço para melhorar a segurança e mobilidade e para incentivar a inovação. Assim como o COST Transport, a FHWA elaborou um relatório técnico \cite{tech:fhwa-wim-data-analysts-manual} com especificações para guiar o desenvolvimento de sistemas e instalações para a pesagem em movimento no Estados Unidos da América.
 
-No setor privado, existem algumas empresas  que fornecem soluções para a pesagem de veículos, como por exemplo: \textit{Traffic Data Collection (TDC)}, \textit{Mettler Toledo}, \textit{International Road Dynamics (IRD)} e \textit{Intercomp}.
+No setor privado, existem algumas empresas  que fornecem soluções para a pesagem de veículos, como por exemplo: \textit{Traffic Data Collection (TDC)\footnote{http://www.tdcsystems.co.uk/}}, \textit{Mettler Toledo\footnote{http://www.mt.com/}}, \textit{International Road Dynamics (IRD)\footnote{http://www.irdinc.com/}}, \textit{Intercomp\footnote{http://www.intercompcompany.com/}} e \textit{Sterela\footnote{http://www.sterela.fr/}}.
 
 % ---------
 
 \section{Objetivos}\label{introducao-objetivos}
 \subsection{Objetivo Geral}\label{introducao-objetivo-geral}
-O objetivo do trabalho proposto é expor conhecimentos necessários para a construção de um sistema computacional básico para apoio à pesagem em movimento de veículos pesados em formato de algoritmos, visando proporcionar mecanismos para fomentar futuras investigações no tema, principalmente, em países subdesenvolvidos ou em desenvolvimento.
+O objetivo deste trabalho é a criação de uma proposição de padrões para dados e algoritmos no campo de pesagem em movimento visando uma melhor reutilização desses produtos científicos.
 
 \subsection{Objetivos específicos}\label{introducao-objetivos-especificos}
-O escopo desse trabalho conter-se-á apenas nos módulos básicos para o funcionamento de um sistema computacional de apoio à pesagem em movimento de veículos pesados, sendo eles:
+Os objetivos específicos deste trabalho são:
 
 \begin{itemize}
-\item Aquisição de sinal dos sensores de peso (balança);
-\item Segmentação sinal (para cortar o respectivo sinal para o caminhão medido);
-\item Processamento digital de sinal;
-\item Cálculos (velocidade, número de eixos, conjuntos de eixos, distância entre eixos, o peso total, o peso por eixo, peso grupo de eixos, comprimento);
-\item Classificação veicular;
-\item Calibração;
-\item Reconhecimento de placa de identificação veicular;
-\item Detecção de infracções;
-\end{itemize}
+\item  propor padrões de estruturação de dados de entrada e saída;
+\item  propor utilização de padrões para desenvolvimento de algoritmos;
+\item  propor padrões tecnológicos para armazenamento e compartilhamento de dados e algoritmos;
+\end{itemize} 
 
 \section{Referencial teórico}\label{introducao-referencial}
-Aqui são apresentadas algumas das referências mais básicas para o desenvolvimento deste trabalho. Este projeto foi elaborado embasado nas referências e dados fornecidos pelo \textit{COST 323} \cite{tech:cost-323} e também pela \textit{FHWA} \cite{tech:fhwa-wim-data-analysts-manual}. Ambos trabalhos tratam os principais temas relacionados a implantação de um sistema de pesagem em movimento. Para apoiar o tema da pesagem em movimento utilizando múltiplos sensores, David Cebon \cite{study-of-road-damage}, Taek Mu Kwon e Bibhu Aryal \cite{tech:dev-pc-eight-channel-wim-system} apresentam publicações substanciais ao tema. Outros artigos deverão somar-se ao referencial teórico para apoiar na construção dos componentes desse sistema, como por exemplo, o tema de reconhecimento de matrícula veicular \cite{article:alpr-using-python-and-opencv} e a classificação veicular \cite{tech:optimization-vehicle-classification}.
+Serão analisados os trabalhos disponibilizados na biblioteca da \textit{International Society for Weigh-in-Motion\footnote{http://www.is-wim.org/}}:
+
+\begin{itemize}
+\item Conclusions of the workshop on WIM for enforcement, Amsterdam, 26/3/2014;
+\item International Society for Weigh-in-Motion 2014 - ISWIM (B. Jacob);
+\item Experience of automatic number plate recognition and weigh in motion systems (V. Dolcemascolo);
+\item HS WIM direct enforcement (E. Doupal);
+\item Feasibility study for Hungarian axle weiging network (R. Mikulas);
+\item Targeted Enforcement using WIMS \& ANPR (P. Stokes);
+\item Minutes of the workshop on WIM for enforcement, Brussels, 27/2/2013;
+\item TISPOL and ECR, Brief introduction (G. Schipper);
+\item International Society for Weigh-in-Motion 2013 - ISWIM (B. Jacob);
+\item Weigh-in-Motion for Enforcement in Europe (H. van Loo, B. Jacob);
+\item Developments in enforcement of heavy goods vehicles (A. Hellemons);
+\item The French National Projet: using WIM for direct enforcement of overloading (V. Dolcemascolo, B. Jacob);
+\item Weigh Station Architecture - Brazil (V. Tani);
+\item European Standard Draft prEN XXX-1:2013, Weigh-in-Motion of Road Vehicles, CEN 2013-01 (from COST323);
+\item European Standard Draft prEN XXX-2:2013, Weigh-in-Motion of Road Vehicles - Simplified Requirements, CEN 2013-01 (from COST323);
+\item European Standard Draft prEN XXX:2011, Weigh-in-Motion of Road Vehicles, CEN 2011-01 (from COST323);
+\item Wavelet domain analysis for identification of vehicle axles from bridge measurements (Chatterjee et al.);
+\item Traffic load modelling and factors influencing the accuracy of predicted extremes (O'Connor et al.);
+\item Testing of bridge weigh-in-motion system in sub-Arctic climate (McNulty et al.);
+\item Let's Talk Calibration, Webinar organised by the US-DOT/FHWA on calibration of WIM systems in the US (14/6/2011);
+\item Calibration and Validation of WIM Systems using Excel Workbooks (US document);
+\item WIM Data Analyst's Manual (FHWA-IF-10-018);
+\item WIM Site Selection and Pavement Preparation and Considerations (FHWA WIM/Traffic Workshop, Raleigh, NC, Feb. 2009);
+\item International WIM activities (presented at 90th TRB, January 2001, Committee ABJ35);
+\item WIM data cleaning;
+\item Equipment for Collecting Traffic Load Data (NCHRP Report 509);
+\item REMOVE: Final Report;
+\item REMOVE: Application Terms utilized in Vehicle Weighing;
+\item REMOVE: WP4 - Cost Benefit Analysis;
+\item REMOVE: WP3 - Future Enforcement Strategy;
+\item REMOVE: WP2 - Technical Issues;
+\item REMOVE: WP1 - Legal Issues;
+\item Effective Use of Weigh-in-Motion Data: The Netherlands Case Study;
+\item Federal Highway Administration;
+\item Assessment of the factors influencing the accuracy of a WIM system (F. Scheuter);
+\item A new weigh-in-motion and traffic monitoring system (P. Barsanescu et al.);
+\item High speed weigh-in-motion system calibration practices;
+\item Technical Aspects of Weighing Road Vehicles;
+\item Bridge live load models from WIM data (T. Miao et al.);
+\item New Sensors System for Monitoring of Traffic Load (K. Sekula et al.);
+\item Design of a Capacitive Flexible Weighing Sensor for Vehicle WIM System (L. Cheng et al.);
+\item Practical Application of Weigh-in-Motion Systems with Quartz Crystal Sensors;
+\item Weigh-In-Motion studies using strip-type sensors : the preliminary results;
+\item US WIM Handbook;
+\item Accuracy calculation sheet of a WIM system by testing according to the European Specification COST323;
+\item European Specification of WIM COST323;
+\item Proceedings of the International Conference on Weigh-in-motion ICWIM5 (May 2008, ISTE/J. Wiley);
+\item Effectiveness of Vehicle Weight Estimation from Bridge Weigh-in-Motion (T. Deesomsuk et al.).
+\end{itemize}
+
+Para a identificação de padrões tecnológicos para facilitar o compartilhamento e reuso de dados e algoritmos, deverão ser buscados por palavras chaves como \textit{Open Science}, \textit{Open Data}, \textit{Open Source} e \textit{Standards}.
 
 \section{Metodologia}\label{introducao-metodologia}
-A natureza dessa pesquisa é de caráter aplicado, objetiva gerar conhecimentos para aplicação prática. A pesquisa é também qualitativa pois, o processo e seu significado são os focos principais da abordagem. A pesquisa também se enquadrará no tipo exploratória e bibliográfica pois, visa proporcionar o conhecimento do tema, através dos levamentos bibliográficos e algoritmos, com a aplicação dos métodos estudados.
+Por meio de uma análise das literaturas de pesagem em movimento disponibilizadas na biblioteca da \textit{International Society for Weigh-in-Motion\footnote{http://www.is-wim.org/}}, serão levantadas as recomendações para a padronização de dados e algoritmos para pesquisas sobre WIM. Caso necessário, poderão ser analisadas outras literaturas sobre WIM fora dessa indexação.
 
-O projeto buscará, através de algoritmos, demonstrar a aplicação de um sistema computacional de apoio à pesagem em movimento de veículos pesados, resultando um protótipo de computacional para o tema.
+Adicionalmente, serão consultadas literaturas de outros campos de estudo sobre padronização de dados e algoritmos com foco no compartilhamento dos produtos científicos dentro do fluxo de trabalho na comunicação científica. Essa análise identificará os padrões utilizados em outros campos e as tecnologias utilizadas para facilitar o compartilhamento e a reutilização desses produtos científicos. Deverá ter ao menos um referência para ser utilizada neste estudo.
 
-Os algoritmos serão escritos em uma linguagem de programação multi-plataforma e de carácter livre, podendo assim, ser facilmente reproduzido por futuros pesquisadores. Uma linguagem que cumpri com esses requisitos é o \textit{Python} e, por isso, será utilizada como base na construção dos algoritmos. Este algoritmos serão publicados na plataforma \textit{GitHub} sob a licença livre \textit{GPL versão 3} \cite{web:gplv3}, permitindo livre acesso a todos estes conhecimentos.
-
-De modo complementar, serão contatadas as empresa fabricantes de sensores, solicitando a elas a validação dos algoritmos dos cálculos para seus sensores. Com isso pretende-se homologar os algoritmos escritos para cada tipo de sensor.
+Após a identificação das recomendações apresentadas nas literaturas, serão analisados os pontos em comum e, posteriormente, serão apresentadas proposições para padronização dos produtos científicos mencionados.
 
 \section{Resultados esperados}\label{introducao-resultados}
-Com esse trabalho espera-se proporcionar uma fonte inicial para futuros pesquisadores no tema que, de maneira prática, poderão aprender rapidamente os mecanismos básicos de um sistema computacional de apoio à pesagem em movimento, economizando tempo, podendo também, colaborar na investigação e aprimoramento dos módulos.
+Com esse trabalho espera-se proporcionar mecanismo para facilitar o compartilhamento e a reutilização dos produtos científicos do campo de pesagem em movimento.
 
-Os algoritmos apresentados resultarão no primeiro protótipo de \textit{software} para pesagem de movimento de veículos de carga.
-
-Da avaliação dos resultados numéricos, espera-se que o protótipo proposto contemple os componentes da pesagem de veículos de carga com uma baixa margem de erro. A principio, alguns componentes serão testados utilizando dados de entrada sintéticos, por isso, as margens de erro nas avaliações, nestes casos, tenderão a ser zero.
-
-O protótipo, após concluído, poderá seguir em desenvolvimento, não somente através de seu autor, mas, também, por qualquer pesquisador/colaborador interessado, conforme as regras estabelecidas pela licença GPLv3 \cite{web:gplv3}.
 
 \chapter{Pesagem em movimento de veículos pesados}\label{wim}
 
@@ -254,7 +295,7 @@ Ainda no mesmo documento, o DNIT informa que, devido à incerteza na medição d
     \includegraphics[scale=0.5]{./figuras/tabela-peso-por-eixo.png}
 \end{figure}
 
-Os veículos são classificados de acordo com a distribuição dos seus eixos. O \citeonline[p. 15]{tech:dnit-qvf} apresenta uma lista com mais de 150 classificações de veículos, que podem trafegar sem necessidade de um AET. Quando o fabricante especificar um limite inferior ao da tabela apresentada pelo \citeonline{tech:dnit-qvf}, deve ser considerado o menor valor como referência.
+Os veículos são classificados de acordo com a distribuição dos seus eixos. O \citeonline[p. 15]{tech:dnit-qvf} apresenta uma lista com mais de 150 classificações de veículos, que podem trafegar sem necessidade de AET (Autorização Especial de Trânsito). Quando o fabricante especificar um limite inferior ao da tabela apresentada pelo \citeonline{tech:dnit-qvf}, deve ser considerado o menor valor como referência.
 
 A fiscalização de peso de veículos pesados, em rodovias federias no Brasil, é feita pelos Postos de Pesagem Veicular (PPV) do DNIT e da ANTT, e também pode ser feita através de encaminhamento dos veículos pela Polícia Rodoviária Federal (PRF) a esses postos.
 
@@ -309,7 +350,7 @@ Em \cite[p. 8]{ref:zhang2007evaluating}, é apresentado pelos autores uma tabela
 
 % ------------------------------------------------------------
 
-\chapter{Algoritmos de apoio à pesgem em movimento}\label{algoritmos}
+\subsection{Algoritmos de apoio à pesagem em movimento}\label{algoritmos}
 Um sistema computacional para a pesagem de veículos em movimento consiste essencialmente de:
 
 \begin{itemize}
@@ -323,375 +364,19 @@ Um sistema computacional para a pesagem de veículos em movimento consiste essen
 \item Detecção de infracções;
 \end{itemize}
 
-O sistema deve ser rápido e robusto para processar todas essas informações em um tempo que seja suficiente para sinalizar e indicar ao usuário da pista que seu veículo deve ser direcionado a um posto de pesagem. \textit{Python} não é uma língua conhecida por ter um elevado nível de desempenho, por isso é necessária a utilização de bibliotecas e métodos para melhorar as suas capacidades de processamento.
-
 Com base nos resultados da pesagem, classificação e reconhecimento de placa de identificação do veículo, é possível saber se o veículo está com sobrepeso e, em caso afirmativo, é possível vincular a infração à identidade do veículo.
 
-A construção dos algoritmos serão apoiadas pelas bibliotecas computacionais: \textit{numpy, scipy, pandas, sqlalchemy, statsmodels, numba, scikit-learn, pydaqmx, bokeh, ipython, jupyter}.
+% ------------------------------------------------------------
 
-\section{Aquisição de dados}\label{algoritmos-daq}
-O módulo de aquisição de dados é responsável por adquirir dado provenientes da placa de aquisição, que está conectada aos sensores de peso. Para a elaboração dessa seção, foi utilizada como referência a placa de aquisição \textit{DAQmx} da empresa \textit{National Instruments (NI)}. Para comunicar-se com este tipo de placa, será utilizada como apoio a biblioteca computacional \textit{PyDAQmx} que é uma interface completa para os controladores da placa.
+\chapter{Identificação de padrões para dados e algoritmos}\label{id-standards}
 
-Após a aquisição do sinal dos sensores, o sistema armazena estes dados em uma memória circular, dentro de um processo paralelo, onde são analisados com o objetivo de encontrar um sinal de um veículo (segmentação). Este processo foi construído de maneira muito simples, onde o programa aguarda que o sinal proveniente de um circuito indutivo e, quando acionado, segmenta o sinal com dados respectivos aos 3 segundos seguintes.
+% ------------------------------------------------------------
 
-%==========================================
-% CARACTERIZAÇÃO DA PLACA DE AQUISIÇÃO
-%==========================================
+\chapter{Identificação de padrões tecnológicos compartilhamento de dados e algoritmos}\label{id-tech-standards}
 
-\subsection{Características da Placa de Aquisição}\label{placa-aquisicao}
+% ------------------------------------------------------------
 
-A National Instruments (NI) é uma empresa produtora de equipamento de teste automatizado e software de instrumentação virtual com aplicações comuns de aquisição de dados, controle de instrumentos e visão artificial.
-
-O sistema de Pesagem em Movimento (\textbf{WIM}) está estruturado em: 
-\begin{itemize}
-  \item Aquisição dos sinais transmitidos através dos sensores piezoelétricos e captados pela placa de aquisição \textbf{NI USB DAQmx};
-  \item Processamento do sinal (segmentação, filtro, detecção de pico, etc);
-  \item Cálculos para obtenção do peso do caminhão
-  \item Armazenamento dos dados e informações coletados.
-\end{itemize}
-
-A placa utilizada no projeto \textbf{WIM} é a \textbf{NI USB DAQmx 6251} para os sensores piezoelétricos de quartzo. Para trabalhar com essa placa é necessário utilizar os componentes disponibilizados pela NI. No site da fabricante é possível verificar as placas e os componentes e sistemas operacionais compatíveis \cite{nidamx-portable-devices}. 
-
-Para parametrizar algumas funções da biblioteca \textbf{NIDAQmx} é importante ter conhecimento algumas especificações da placa \textbf{NIDAQ USB 6251}.
-
-\begin{description}
-  \item Taxa de Amostragem (Sampling rate):
-  \begin{itemize}
-    \item 1.00 MS/s (multi canais)
-    \item Tempo de acurácia 50 ppm de taxa de amostra
-    \item Tempo de resolução 50 ns
-  \end{itemize}
-\end{description}
-
-\begin{description}
-  \item Buffer:
-  \begin{itemize}
-    \item Tamanho de Entrada FIFO: 4095
-    \item Memória de lista capturada: 4095 entradas
-  \end{itemize}
-\end{description}
-
-%==========================================
-% MÉTODOS PARA AQUISIÇÃO DE DADOS
-%==========================================
-
-\subsection{Métodos para Aquisição de Dados}\label{metodo-aquisicao}
-
-A aquisição de dados é basicamente estruturada em sensores, placa de aquisição e processamento dos sinais recebidos. O processamento dos sinais é feito através da biblioteca \textbf{NIDAQmx} (bibliotecas escritas em \textbf{C/C++}) e são utilizadas em \textbf{Python} através do \textbf{PyDAQmx}.
-
-A aquisição de dados com a biblioteca \textbf{NIDAQmx} pode ser: contínua, finita ou \textit{Hardware Timed Single Point}. Cada modo possui características específicas e está apresentada abaixo uma breve descrição de cada um:
-
-\begin{description}
-  \item Aquisição Contínua
-    \begin{itemize}
-      \item Trabalha internamente com \textit{buffer} circular \cite{nidaqmx-faq};
-    \end{itemize}
-  \item Aquisição Finita
-    \begin{itemize}
-      \item Em casos gerais deve-se usar o método \textit{WaitUntilTaskDone} com método em modo finito de medições e gerações antes de solicitar a parada da tarefa \cite{nidaqmx-using-wait-until-done}.
-    \end{itemize}
-  \item Aquisição \textit{Hardware Timed Single Point}
-    \begin{itemize}
-      \item A biblioteca \textbf{NIDAQmx} não cria \textit{buffer} para armazenar os valores obtidos \cite{nidaqmx-hwtspsamplemode}.
-      \item Para a Placa \textbf{NIDAQ USB 6251} o modo de aquisição \textit{Hardware Timed Single Point} não funcionou, retornando o erro (-2000077).
-    \end{itemize}
-\end{description} 
-
-O desempenho e a qualidade dos dados medidos vai depender da estratégia adotada para fazer a aquisição e os parâmetros definidos nos métodos.
-
-Sobre a taxa de amostragem, em geral, a \textbf{NI} recomenda utilizar o teorema de \textbf{Nyquist} para definir o valor da taxa de amostragem que diz que um sinal deve ser amostrado a uma taxa maior que duas vezes a componente de maior frequência de interesse no sinal para que essa componente seja capturada \cite{nidaqmx-conceitos-basicos-amostragem-analogica}.
-
-Porém, para o sistema de pesagem em movimento a fabricante dos sensores de aquisição desenvolveu um cálculo para definir a taxa de amostragem \cite[p. 9]{kistler2004installation}.
-
-\begin{equation}
-Taxa\ de\ Amostragem = \frac{velocidade(m/s)\ \times \ m\acute{\imath}nimo\ de\ pontos\ medidos\ (por\ curva)}{largura\ da\ impressão\ do\ pneu}
-\end{equation}
-
-Através de seus estudos a fabricante chegou a uma taxa de amostragem recomendada de \textbf{2 MHz} \cite[p. 9]{kistler-instruction-manual}.
-
-A estrutura geral de aquisição com a biblioteca \textbf{NIDAQmx} é: 
-\begin{enumerate}
-\item Criação da tarefa (\textit{Task Configuration/Control});
-\item Definição do método de Amostragem (\textit{Timing});
-\item Início da tarefa (\textit{Task Configuration/Control});
-\item Leitura de sinal (\textit{Read Functions} ou \textit{Events Callback});
-\item Fim da tarefa (\textit{Task Configuration/Control});
-\end{enumerate}
-
-Para visualizar a lista completa das funções disponíveis na biblioteca \textbf{NIDAQmx} acesse o site da \textbf{NI} \cite{nidaqmx-c-reference}.
-
-%==========================================
-% ESTRATÉGIA DE AQUISIÇÃO
-%==========================================-
-
-\subsection{Estratégia de Aquisição de Dados}\label{estrategia-aquisicao}
-A estratégia para adquirir os dados vai depender das necessidades e condições de execução do sistema (como por exemplo, memória, processamento, latência, etc). 
-
-A aquisição é definida através de uma tarefa (\textit{Task}) e pode ser configurada para ler 1 ou mais canais de um dispositivo (placa), cada dispositivo necessita de uma tarefa única.
-
-Alguns exemplos de aquisição podem ser encontrados no sítio web do \textbf{PyDAQmx} \cite{pydaqmx}.
-
-A continuação estão listadas algumas das opções para fazer a aquisição de dados com a biblioteca \textbf{NIDAQmx}. 
-
-%==========================================
-% ESTRATÉGIA: AQUISIÇÃO CONTÍNUA INICIADA 
-% UMA UNICA VEZ
-%==========================================
-
-\subsubsection{Aquisição contínua, tarefa iniciada uma única vez}\label{aquisicao-continua}
-
-A biblioteca \textbf{NIDAQmx} pode ser configurada para adquirir em modo contínuo. Nesse modo é iniciada apenas uma vez a tarefa (deve ser criada uma tarefa por dispositivo), a leitura dos sinais é feita dentro de um laço de repetição infinita e é necessário utilizar um comando para aguardar por um tempo determinado suficiente para que o \textit{buffer} interno da biblioteca consiga armazenar a quantidade de amostras definidas para a leitura. A seguir está listada um exemplo com os passos para realizar esse tipo de aquisição:
-\begin{enumerate}
-  \item Cria tarefa (\textit{CreateTask});
-  \item Configura o tempo de amostragem em modo continuo (\textit{DAQmxCfgSampClkTiming});
-  \item Inicia a tarefa de aquisição (\textit{DAQmxStartTask});
-  \item Inicia um laço de repetição (laço infinito);
-  \item Leitura do sinal a cada N amostras(\textit{DAQmxReadAnalogF64});
-  \item Calcula o \textit{timestamp} para cada linha de sinal adquirido;
-  \item Repete laço infinitamente;
-  \item Finaliza a tarefa de aquisição (\textit{DAQmxStopTask})
-\end{enumerate}
-
-%==========================================
-% ESTRATÉGIA: AQUISIÇÃO CONTÍNUA INICIADA 
-% UMA UNICA VEZ, LEITURA ATRAVÉS DE CALLBACK
-%==========================================
-\subsubsection{Aquisição contínua, tarefa iniciada uma única vez com \textit{callback}}\label{aquisicao-continua-callback}
-
-A biblioteca \textbf{NI DAQmx} permite a configuração de uma função de \textbf{callback} para ser executada automaticamente após a leitura de $N$ número de amostras em cada canal utilizando a aquisição em modo contínua. O \textit{timestamp} deverá ser calculado para cada item da amostra, ou seja, N \textit{timestamps} de intervalo $\Delta t$ (calculado com base na taxa de amostragem). Para que o sistema não encerre durante a espera dos \textit{callbacks} pode ser utilizado o comando \textit{raw\_input} que faz a execução do sistema esperar por um \textit{ENTER} para prosseguir. A continuação segue exemplo de aquisição com \textit{callback}:
-
-\begin{enumerate}
-  \item Cria tarefa por dispositivo (\textit{CreateTask});
-  \item Configura o tempo de amostragem em modo continuo (\textit{DAQmxCfgSampClkTiming});
-  \item Define a aquisição através de \textit{callback} (\textit{RegisterEveryNSamplesEvent e RegisterDoneEvent})
-  \item Dentro do método \textit{EveryNCallback} realizar a leitura dos sinais (\textit{DAQmxReadAnalogF64}) e calcular o \textit{timestamp} para cada aquisição da amostragem (para cada N amostras por canal deve ter uma lista com N \textit{timestamps} ($\Delta t$ de acordo com a taxa de amostragem);
-  \item Inicia a tarefa de aquisição de cada dispositivo(\textit{DAQmxStartTask});
-  \item Aciona comando de interrupção de teclado (\textit{raw\_input}) para não encerrar o processamento do sistema enquanto o sistema faz a aquisição por \textit{callback};
-  \item Quando for pressionada a tecla \textit{<ENTER>} finaliza a tarefa de aquisição de cada dispositivo(\textit{DAQmxStopTask}) e encerra a execução do sistema.
-\end{enumerate}
-
-%==========================================
-% ESTRATÉGIA: AQUISIÇÃO FINITA INICIADA 
-% TASK POR CANAL; INICIO, LEITURA e PARADA 
-% DA TASK DENTRO DE UM LAÇO DE REPETIÇÃO
-%==========================================
-\subsubsection{Aquisição de amostragem finita e uma tarefa por canal}\label{aquisicao-finita-loop-infinito}
-
-Para trabalhar com aquisição de amostragem finita deve ser considerado criar uma tarefa para cada canal. A aquisição ficará dentro de um laço infinito e ela será individual para cada canal (inicio de aquisição, leitura e encerramento da aquisição). A leitura deverá retornar apenas uma amostra por vez e por isso não é necessário utilizar o método de \textit{Clock Time Sampling}, o tempo entre cada aquisição deverá ser feita através de um método do tipo \textit{sleep} (tempo de espera). A seguir a ilustração dos passos para a aquisição finita:
-
-\begin{enumerate}
-  \item Cria uma tarefa para cada canal(\textit{CreateTask});
-  \item Inicia o laço de repetição infinita;
-  \item Para cada canal:
-    \begin{enumerate}
-      \item Inicia a tarefa de aquisição (\textit{DAQmxStartTask});
-      \item \textbf{1 amostra} por leitura (\textit{DAQmxReadAnalogF64});
-      \item Armazena o valor adquirido junto com o \textit{timestamp} atual do sistema;
-      \item Finaliza a tarefa de aquisição (\textit{DAQmxStopTask});
-    \end{enumerate}
-  \item Repete laço infinitamente a cada X tempo;
-\end{enumerate}
-
-%==========================================
-% APLICAÇÃO E RESULTADOS
-%==========================================
-\subsection{Aplicação e Resultados}\label{aplicacao-resultado}
-A \textbf{National Instruments}, empresa que fabrica as placas \textbf{NI DAQmx}, disponibiliza um conjunto de aplicativos para auxiliar o desenvolvimento e testes dos dispositivos e bibliotecas criados pela mesma \cite{nidaqmx-cd-9.8}. Entre esses aplicativos encontra-se o \textbf{NI MAX} que permite realizar simulações e testes de aquisição e geração de sinais utilizando parâmetros reais para a configuração da tarefa, como modo de amostragem, tensão máxima, frequência, etc. É possível também criar placas simuladas específicas para a realização dos testes.
-
-%==========================================
-% APLICAÇÃO E RESULTADOS - Leitura da Entrada Lógica
-%==========================================
-\subsubsection{Leitura da Entrada Analógica}
-Foram analisadas diferentes opções de leitura para avaliar performance, consumo de memória e consumo de processamento
-
-\begin{table}[htbp]
-  \centering
-  \begin{footnotesize}
-    \begin{tabular}{|p{3cm}|p{2cm}|p{2cm}|p{2cm}|}
-      \textbf{Modo de Aquisição} & \textbf{Desempenho} & \textbf{Consumo de memória} & \textbf{Consumo de Processamento} \\ \hline
-       Aquisição finita & Baixa & Alto & Alto \\ \hline
-       Aquisição contínua com \textit{callback} & Alta & Baixo & Baixo\\ \hline
-    \end{tabular}
-  \end{footnotesize} 
-  \caption{Comparativo entre diferentes modos de aquisição}
-  \label{tab:comparativo-aquisição}
-\end{table} 
-
-
-%==========================================
-% APLICAÇÃO E RESULTADOS - GERAÇÃO
-%==========================================
-\subsubsection{Escrita na Saída Analógica}
-Através do \textbf{NI MAX} e algoritmos externos foram realizados testes com geração de sinal com as placas \textbf{NI DAQmx 6343 e 6251} simuladas. Os testes com as placas reais \textbf{NI DAQmx 6343}, por sua vez, apresentaram alguns problemas e foi necessário alterar o fluxo do algoritmo para o correto funcionamento da geração. O algoritmo foi desenhado para trabalhar com a geração em modo finito dentro de um laço infinito utilizando os sinais já adquiridos em outras medições para simular a geração de sinais reais.
-
-A estrutura do algoritmo deverá seguir os seguintes passos:
-
-\begin{enumerate}
-  \item Criação da tarefa (\textit{DAQmxCreateTask});
-  \item Configuração dos canais de saída analógica (\textit{DAQmxCreateAOVoltageChan});
-  \item Configuração da amostragem (modo finito) da tarefa (\textit{DAQmxCfgSampClkTiming});
-  \item Inicia um laço de repetição infinita;
-  \item Caso estiver alguma ação pendente espera a conclusão da tarefa (\textit{DAQmxWaitUntilTaskDone}) e para a tarefa (\textit{DAQmxStopTask});
-  \item Envia dados para a saída analógica da placa (\textit{DAQmxWriteAnalogF64});
-  \item Repete o laço até o usuário enviar sinal de interrupção;
-\end{enumerate}
-
-\begin{lstlisting}[language=Python, caption=Aquisição de dados com PyDAQmx, label={lst:pydaqmx}]
-samples_per_channel = 1000
-number_of_channels = 1
-
-task = pydaq.Task()
-
-task.CreateAIVoltageChan()
-
-task.CfgSampClkTiming()
-total_samples = pydaq.int32()
-data_size = samples_per_channel * number_of_channels
-data = np.zeros((data_size,), dtype=np.float64)
-
-task.StartTask()
-
-data = task.ReadAnalogF64(
-    samples_per_channel,
-    10.0,
-    pydaq.DAQmx_Val_GroupByChannel,
-    data,
-    data_size,
-    pydaq.byref(total_samples),
-    None
-)
-
-p = plt.figure(title='DAQ', width=600, height=300)
-p.line(np.linspace(0, 3, 15000), data, legend='sensor 1')
-plt.show(p)
-\end{lstlisting}
-
-\subsection{Uso de datos sintéticos}\label{algoritmos-daq-sintetico}
-
-\begin{lstlisting}[language=Python, caption=Geração de dados sintéticos, label={lst:daq-sintetico}]
-df = pd.DataFrame()
-
-sample_rate = 2000
-total_seconds = 3.0
-
-# analog channel 1
-df['a1'] = gen_synthetic_analog_data(
-    sample_rate=sample_rate, total_seconds=total_seconds, 
-    time_delay=0.7, noise_p=10
-)
-
-# analog channel 2
-df['a2'] = gen_synthetic_analog_data(
-    sample_rate=sample_rate, total_seconds=total_seconds, 
-    time_delay=1.0, noise_p=10
-)
-
-# digital loop
-df['d1'] = gen_synthetic_digital_data(
-    sample_rate=sample_rate, total_seconds=total_seconds, 
-    time_delay=0.8
-)
-
-# ploteo
-p = charts.Line(
-    df, title="Datos de los sensores", 
-    xlabel='Segundos (s)', ylabel='Tensao (V)', 
-    width=700, height=400, legend=True
-)
-plt.show(p)
-\end{lstlisting}
-
-% --------------------
-\section{Armazenamento de dados}\label{algoritmos-armazenamento}
-
-Após segmentado, os dados brutos são armazenados na base de dados. Isso faz com que seja possível mudar os métodos de cálculo de parâmetros ou de calibração, o que torna possível analisar os métodos utilizados.
-Em todos os métodos de cálculos e funções do sistema, o padrão para os conjuntos de dados é do tipo \textit{pandas.DataFrame}. Isto é usado desde o tempo de leitura no banco de dados, juntamente com \textit{sqlalchemy}, mesmo nos cálculos, plotagem e gravação de arquivos de banco de dados ou \textit{CSV}. Os mecanismos \textit{pandas.DataFrame} fornece para a manipulação muito semelhantes aos usados em dados de linguagem \textit{R}.
-
-\begin{lstlisting}[language=Python, caption=Armazenamento e consulta na base de datos, label={lst:bd}]
-# Connect to the database
-DATABASE = {
-    'host': 'localhost',
-    'database': 'pywim',
-    'port': '5432',
-    'user': 'pywim',
-    'password': 'pywim'
-}
-
-conn = psycopg2.connect(**DATABASE)
-
-engine = sqlalchemy.create_engine(
-    'postgresql+psycopg2://',
-    creator=lambda: conn
-)
-
-# creates acquisition data
-cur = conn.cursor()
-cur.execute(
-    'INSERT INTO wim.acquisition (id, date_time) ' +
-    'VALUES (DEFAULT, %s) RETURNING id', (datetime.datetime.now(),)
-)
-
-acq_id = cur.fetchone()[0]
-
-conn.commit()
-cur.close()
-
-df_data = df.copy()
-df_data['acquisition'] = acq_id
-df_data['time_seconds'] = df_data.index
-df_data.rename(
-    columns={
-        'a1': 'sensor1', 'a2': 'sensor2', 'd1': 'inductive_loop'
-    }, inplace=True
-)
-
-df_data.to_sql(
-    'acquisition_data', con=engine, 
-    schema='wim', if_exists='append', index=False
-)
-
-conn.commit()
-
-# select acquisition data from database
-df_data = pd.read_sql_query(
-    '''
-    SELECT * FROM wim.acquisition_data
-    WHERE acquisition=%s
-    ''' % acq_id, con=engine,
-    index_col='time_seconds'
-)
-
-df_data.drop('acquisition', axis=1, inplace=True)
-
-# ploteo
-p = charts.Line(
-    df_data[['sensor1', 'sensor2', 'inductive_loop']], 
-    title="Datos de los sensores", 
-    xlabel='Segundos (s)', ylabel='Tensao (V)', 
-    width=700, height=400, legend=True
-)
-plt.show(p)
-
-\end{lstlisting}
-% --------------------
-\section{Processamento digital de sinal}\label{algoritmos-dsp}
-
-
-
-% --------------------
-\section{Cálculos}\label{algoritmos-calculos}
-
-
-% --------------------
-\section{Classificação Veicular}\label{algoritmos-classificacao}
-
-
-% --------------------
-\section{Calibração dos cálculos de pesagem}\label{algoritmos-calibracao}
-
-
-% --------------------
-\section{Reconhecimento automático de placas de identificação veicular}\label{algoritmos-alpr}
+\chapter{Proposição de padrões para compartilhamento de dados e algoritmos}\label{standards-proposition}
 
 % ------------------------------------------------------------
 
