@@ -75,7 +75,7 @@ igualdad nos descaracteriza.}{Boaventura de Souza Santos}
 \textoResumo {Muitos acidentes rodoviários são causados, direta ou indiretamente, por veículos pesados que transitam com excesso de peso. Estes danificam o pavimento e, também, sofrem os efeitos dinâmicos durante as curvas. \\Para inibir o excesso de peso dos veículos pesados, é necessário supervisionar essas infrações e, quando necessário, aplicar as medidas instituídas por lei, tais como multas e detenções. Um método que está sendo investigado em muitas partes do mundo é a pesagem em movimento (\textit{WIM}). Este método tem as vantagens com a economia em espaço físico e recursos para operação, uma vez que os sensores são implantados na própria via, e não implica em atrasos diretos no fluxo da via, pois pode fiscalizar os veículos trafegando na velocidade diretriz da pista. Este trabalho explica, através de algoritmos, o funcionamento dos módulos fundamentais para realizar a pesagem em movimento de veículos pesados. Objetiva-se com este trabalho servir como base inicial para futuras pesquisas sobre \textit{WIM}.
 }
 
-\palavrasChave {Pesagem em movimento. Pesquisas em Transporte. Algoritmos.}
+\palavrasChave {Pesagem em movimento. Padrões. Dados. Algoritmos.}
 
 \textAbstract {Many road accidents are caused directly or indirectly by lorries transiting overweight. These vehicles damage the paviment surface and can also suffer from the dynamic effects during cornering. \\To inhibit the excess weight of heavy vehicles, it is necessary to monitor these violations and, when necessary, apply the punishment established by law, such as fines and arrests. One method that is being investigated in many parts of the world is Weighing-in-Motion. This method has the advantages with the savings in physical space and resources for operation, because the sensors are deployed in the normal lane, and does not imply direct delays in the road flow, it posibility inspect the vehicles traveling in the guideline speed of the track. This paper explains some aspects of WIM systems throught algorithms. The main objective serve as a basis for future research about WIM.}
 
@@ -121,17 +121,40 @@ igualdad nos descaracteriza.}{Boaventura de Souza Santos}
 % Elementos textuais
 \setcounter{page}{1}
 \chapter{Introduçăo}\label{introducao}
+
+A pesagem em movimento, também conhecida como \textit{WIM} (sigla do termo em inglês \textit{Weigh-in-Motion}), é uma tecnologia que permite a fiscalização de veículos de carga sem que haja a interrupção do fluxo de trânsito dos veiculo, consequentemente, possibilita a pesagem de todos os veículos de carga que passarem pelos sensores. A pesagem de veículos de carga é de vital importância à fiscalização de peso de caminhões, com o intuito de melhorar a segurança viária e reduzir custos de manutenção das vias \cite{techreport:jacob2002wave}. 
+
 Caminhões que transitam com excesso de carga danificam mais as vias e têm menos estabilidade, podendo acarretar em acidentes graves. No Brasil, o Departamento Nacional de Infraestrutura de Transportes (DNIT) informou a despesa empenhada em 2013 para ações de manutenção e restauração das estradas federais no valor de mais de R\$ 5 bilhões \cite{tech:relatorio-de-gestao-do-exercicio-de-2013}.
 
-A pesagem de veículos de carga é de vital importância à fiscalização de peso de caminhões, com o intuito de melhorar a segurança viária e reduzir custos de manutenção das vias \cite{techreport:jacob2002wave}. A pesagem em movimento, também conhecida como \textit{WIM} (sigla do termo em inglês \textit{Weigh-in-Motion}), é uma tecnologia que permite a fiscalização de veículos de carga sem que haja a interrupção do fluxo de trânsito dos veiculo, consequentemente, possibilita a pesagem de todos os veículos de carga que passarem pelos sensores.
-
-O tema de pesagem em movimento está tomando a atenção de governos do mundo inteiro. O COST 323 é uma das ações apoiadas pela \textit{COST Transport}, parte da Direção Geral da Comissão Europeia de Transportes. Seguindo uma proposta do grupo \textit{FEHRL} (sigla para o termo em inglês para Fórum dos Laboratórios de Pesquisa de Rodovias Europeias) o COST 323 foi iniciado em 1992. Desde 1993, ele tem sido gerido pelo Comitê de Gestão, um grupo de peritos científicos e técnicos, para promover o desenvolvimento e implementação de pesagem técnicas em movimento e suas aplicações, e para facilitar a troca de experiências entre os diferentes países europeus. Nos Estados Unidos da América, a \textit{FHWA} (sigla em inglês para o termo Administração Federal de Rodovias) fornece supervisão sobre a construção, manutenção e conservação de estradas, pontes e túneis do território norte americano. A \textit{FHWA} também realiza pesquisas e presta assistência técnica aos órgãos estaduais e municipais, em um esforço para melhorar a segurança e mobilidade e para incentivar a inovação. Assim como o COST Transport, a FHWA elaborou um relatório técnico \cite{tech:fhwa-wim-data-analysts-manual} com especificações para guiar o desenvolvimento de sistemas e instalações para a pesagem em movimento no Estados Unidos da América.
+O tema de pesagem em movimento está tomando a atenção de governos do mundo inteiro. O COST 323 é uma das ações apoiadas pela \textit{COST Transport}, parte da Direção Geral da Comissão Europeia de Transportes. Seguindo uma proposta do grupo \textit{FEHRL} (sigla para o termo em inglês \textit{Forum of European National Highway Research Laboratories}) o COST 323 foi iniciado em 1992. Desde 1993, ele tem sido gerido pelo Comitê de Gestão, um grupo de peritos científicos e técnicos, para promover o desenvolvimento e implementação de pesagem técnicas em movimento e suas aplicações, e para facilitar a troca de experiências entre os diferentes países europeus. Nos Estados Unidos da América, a \textit{FHWA} (sigla em inglês para o nome \textit{Federal Highway Administration}) fornece supervisão sobre a construção, manutenção e conservação de estradas, pontes e túneis do território norte americano. A \textit{FHWA} também realiza pesquisas e presta assistência técnica aos órgãos estaduais e municipais, em um esforço para melhorar a segurança e mobilidade e para incentivar a inovação. Assim como o COST Transport, a FHWA elaborou um relatório técnico \cite{tech:fhwa-wim-data-analysts-manual} com especificações para guiar o desenvolvimento de sistemas e instalações para a pesagem em movimento no Estados Unidos da América.
 
 % No setor privado, existem algumas empresas  que fornecem soluções para a pesagem de veículos, como por exemplo: \textit{Traffic Data Collection (TDC)\footnote{http://www.tdcsystems.co.uk/}}, \textit{Mettler Toledo\footnote{http://www.mt.com/}}, \textit{International Road Dynamics (IRD)\footnote{http://www.irdinc.com/}}, \textit{Intercomp\footnote{http://www.intercompcompany.com/}} e \textit{Sterela\footnote{http://www.sterela.fr/}}.
 
-O \textit{ISWIM (International Society for Weigh-in-Motion\footnote{http://www.is-wim.org/})} é uma rede internacional de e para pessoas e organizações ativas no domínio da pesagem em movimento. Seu objetivo é apoiar os avanços e uma utilização mais generalizada das tecnologias WIM e a aplicação de dados WIM \citeonline{ISWIM14:online}. Nesse canal são indexados diversas publicações sobre o tema e que podem ser usadas como fontes inicias para estudos.
+O \textit{ISWIM (International Society for Weigh-in-Motion\footnote{http://www.is-wim.org/})} é uma rede internacional de e para pessoas e organizações ativas no domínio da pesagem em movimento. Seu objetivo é apoiar os avanços e uma utilização mais generalizada das tecnologias WIM e a aplicação de dados WIM \citeonline{ISWIM14:online}. Por meio de sua página WEB estão indexados diversas publicações sobre o tema que poderão ajudar no desenvolvimento da pesquisa.
 
-Entre essas publicações, podem ser encontradas algumas que tratam sobre a questão de padronização das estruturas dos dados coletados, processados e armazenados pelos sistemas WIM. Essas recomendações satisfazem os principais dados produtos de um sistema WIM? Essas recomendações se sobrepõem? Como pode ser melhorada a estruturação dos dados e como pode ser melhorado o armazenamento desses dados? Adicionalmente, como podem ser melhor reaproveitados os algoritmos desenvolvidos para as pesquisas sobre WIM? Essas são as perguntas que este trabalho pretende responder.
+Entre essas publicações, podem ser encontradas algumas que tratam sobre a questão de padronização das estruturas dos dados coletados, processados e armazenados pelos sistemas WIM.
+
+Os dados de entradas de um sistema WIM podem ser:
+\begin{itemize}
+\item dados brutos de sensores de pesagem;
+\item dados brutos de laços indutivos;
+\item dados de passada de veículos conhecidos (peso bruto total, velocidade, distancia entre eixos, peso por eixo, categoria do veículo, temperatura, etc.)
+\item imagem de placa de identificação do veículo;
+\item imagem de veículo;
+\item padrões de categoria de veículos (distancia entre eixos, configuração aproximada da classe do veículo, etc);
+\item dados do ambiente (temperatura, umidade, condições do tráfico, etc.);
+\item etc.
+\end{itemize}
+
+Os dados de saída de um sistema WIM podem ser:
+\begin{itemize}
+\item fatores de calibração;
+\item resultados estimados processados pelo sistema (peso bruto total, velocidade, peso por eixo, peso por grupo de eixos, distancia de eixos, classificação do veículo, etc);
+\item resultados de análises estatísticas, erros relativos, etc.
+\item etc.
+\end{itemize}
+
+Por meio das literaturas, serão verificadas se as recomendações feitas satisfazem os principais dados, tanto os dados de entrada quanto de saída, de um sistema WIM. Seguindo, as estruturas dos dados e o seu armazenamento serão analisados e serão propostos melhorias para melhorar o compartilhamento e a reusabilidade destes. Adicionalmente, serão abordados considerações para algoritmos desenvolvidos para as pesquisas em WIM.
 
 % ---------
 
@@ -143,7 +166,7 @@ Foi observado também que algumas literaturas sugerem padrões para a escrita e 
 
 Métodos de limpeza de dados podem ajudar os investigadores a selecionar e tratar melhor seus dados, resultando em um compartilhamento mais efetivo.
 
-Outro componente importa das pesquisas são os algoritmos desenvolvidos. Observa-se que em algumas pesquisas são desenvolvidos softwares para processar os dados coletados, porém esses algoritmos não são disponibilizados, dificultando a reprodutibilidade dos métodos e modelos propostos.
+Outro componente importantes das pesquisas são os algoritmos desenvolvidos. Observa-se que em algumas pesquisas são desenvolvidos algoritmos para processar os dados coletados, porém esses algoritmos não são disponibilizados, dificultando a reprodutibilidade dos métodos e modelos propostos.
 
 Entende-se então que a disponibilização de dados e algoritmos, criados dentro de padrões claramente estabelecidos, promove uma melhor reprodutibilidade dos métodos propostos nas pesquisas e, consequentemente, caminha em direção aos objetivos da \textit{International Society for Weigh-in-Motion}.
 
@@ -155,9 +178,10 @@ O objetivo deste trabalho é a criação de uma proposição de padrões para da
 Os objetivos específicos deste trabalho são:
 
 \begin{itemize}
-\item  propor padrões de estruturação de dados de entrada e saída;
-\item  propor padrões para desenvolvimento de algoritmos;
-\item  propor padrões tecnológicos para armazenamento e compartilhamento de dados e algoritmos;
+\item propor padrões de estruturação de dados para sistemas WIM;
+\item propor recomendações de boas-práticas que possam ajudar na recomendação de padrões para armazenamento e compartilhamento de dados;
+\item encontrar
+\item propor recomendações de boas-práticas que possam ajudar na recomendação de padrões para armazenamento e compartilhamento de algoritmos;
 \end{itemize}
 
 
